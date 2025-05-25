@@ -1,14 +1,13 @@
 import Hero from '@/features/Hero/hero-section';
+import FeatureContainer from '@/features/home/container/feature-container/feature-container';
+import MapsContainer from '@/features/home/container/map-container/map-container';
 
 export default function Page() {
   return (
     <>
-      <section className="w-full h-screen grid place-items-center">
-        <Hero />
-      </section>
-      <section className="h-screen">
-        <h1>section2</h1>
-      </section>
+      <Hero />
+      <MapsContainer />
+      <FeatureContainer />
     </>
   );
 }

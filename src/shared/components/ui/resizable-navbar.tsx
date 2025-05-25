@@ -8,6 +8,7 @@ import {
   useScroll,
 } from 'framer-motion';
 
+import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 import { ThemeSwitcher } from './theme-switcher';
 
@@ -244,11 +245,12 @@ export const NavbarLogo = () => {
       href="/"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <img
-        src="https://assets.aceternity.com/logo-dark.png"
+      <Image
+        src="https://cdn.discordapp.com/attachments/1205078015319613452/1376247052140286173/paws2.jpg?ex=6834a172&is=68334ff2&hm=689fd6191f0ed6424ad543fb88224da6202fcb592c463517f1ff3bae11bbd132&"
         alt="logo"
         width={30}
         height={30}
+        className="rounded-xl"
       />
       <span className="font-medium text-black dark:text-white">Shoppet</span>
     </a>

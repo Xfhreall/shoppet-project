@@ -29,7 +29,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html suppressHydrationWarning lang="en">
         <body className={`${sora.className} ${geistMono.variable} antialiased`}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             {children}
           </ThemeProvider>
         </body>
