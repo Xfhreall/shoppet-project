@@ -2,6 +2,7 @@ import { ThemeProvider } from '@/shared/providers/theme-provider';
 import type { Metadata } from 'next';
 import { Geist_Mono, Sora } from 'next/font/google';
 import '@/shared/styles/globals.css';
+import { ClerkProvider } from '@clerk/nextjs';
 
 const sora = Sora({
   variable: '--font-sora',
@@ -25,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <ClerkProvider>
       <html suppressHydrationWarning lang="en">
         <body className={`${sora.className} ${geistMono.variable} antialiased`}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
@@ -33,6 +34,6 @@ export default function RootLayout({
           </ThemeProvider>
         </body>
       </html>
-    </>
+    </ClerkProvider>
   );
 }
