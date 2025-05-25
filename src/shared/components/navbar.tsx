@@ -19,16 +19,16 @@ import { ThemeSwitcher } from './ui/theme-switcher';
 export function NavMenu() {
   const navItems = [
     {
-      name: 'Features',
-      link: '#features',
+      name: 'Products',
+      link: '/products',
     },
     {
-      name: 'Pricing',
-      link: '#pricing',
+      name: 'Features',
+      link: '/features',
     },
     {
       name: 'Contact',
-      link: '#contact',
+      link: '/contact',
     },
     { name: '', link: '' },
   ];

@@ -1,6 +1,9 @@
-'use client';
-import { useUser } from '@clerk/nextjs';
-export default function Page() {
-  const { user } = useUser();
-  return <h1>Hello, {user?.username || user?.firstName}</h1>;
+import { auth } from '@clerk/nextjs/server';
+
+export default async function Page() {
+  const { redirectToSignIn, userId } = await auth();
+
+  if (!userId) redirectToSignIn();
+
+  return <h1>Hello, user id anda: {userId}</h1>;
 }
