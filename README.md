@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 1. Clone the repository
 
 ```bash
-git clone https://github.com/pit-intrivia/intrivia-fe-2025.git
+https://github.com/Xfhreall/shoppet-project.git
 ```
 
 2. Set up the environment variables by copying .env.example
