@@ -9,6 +9,7 @@ import {
 } from 'framer-motion';
 
 import React, { useRef, useState } from 'react';
+import { ThemeSwitcher } from './theme-switcher';
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -57,7 +58,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   const [visible, setVisible] = useState<boolean>(false);
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (latest > 100) {
+    if (latest > 180) {
       setVisible(true);
     } else {
       setVisible(false);
@@ -226,6 +227,14 @@ export const MobileNavToggle = ({
     <IconX className="text-black dark:text-white" onClick={onClick} />
   ) : (
     <IconMenu2 className="text-black dark:text-white" onClick={onClick} />
+  );
+};
+
+export const ThemeButton = () => {
+  return (
+    <div className="relative z-20">
+      <ThemeSwitcher />
+    </div>
   );
 };
 

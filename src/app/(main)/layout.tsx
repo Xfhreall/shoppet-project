@@ -1,7 +1,7 @@
-import { ThemeProvider } from '@/shared/providers/theme-provider';
 import type { Metadata } from 'next';
 import { Geist_Mono, Sora } from 'next/font/google';
 import '@/shared/styles/globals.css';
+import { NavMenu } from '@/shared/components/navbar';
 
 const sora = Sora({
   variable: '--font-sora',
@@ -26,13 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <html suppressHydrationWarning lang="en">
-        <body className={`${sora.className} ${geistMono.variable} antialiased`}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
-          </ThemeProvider>
-        </body>
-      </html>
+      <NavMenu />
+      {children}
     </>
   );
 }

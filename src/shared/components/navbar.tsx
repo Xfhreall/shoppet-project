@@ -9,23 +9,27 @@ import {
   Navbar,
   NavbarButton,
   NavbarLogo,
+  ThemeButton,
 } from '@/shared/components/ui/resizable-navbar';
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { LayoutDashboard } from 'lucide-react';
 import { useState } from 'react';
+import { ThemeSwitcher } from './ui/theme-switcher';
 
 export function NavMenu() {
   const navItems = [
-    // {
-    //     name: "Features",
-    //     link: "#features",
-    // },
-    // {
-    //     name: "Pricing",
-    //     link: "#pricing",
-    // },
-    // {
-    //     name: "Contact",
-    //     link: "#contact",
-    // },
+    {
+      name: 'Features',
+      link: '#features',
+    },
+    {
+      name: 'Pricing',
+      link: '#pricing',
+    },
+    {
+      name: 'Contact',
+      link: '#contact',
+    },
     { name: '', link: '' },
   ];
 
@@ -39,7 +43,23 @@ export function NavMenu() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="primary">Login</NavbarButton>
+            <ThemeButton />
+            <div className="z-20 group border-l-2 border-foreground/60 pl-4">
+              <SignedOut>
+                <SignInButton />
+              </SignedOut>
+              <SignedIn>
+                <UserButton>
+                  <UserButton.MenuItems>
+                    <UserButton.Link
+                      label="Dashboard"
+                      labelIcon={<LayoutDashboard className="size-4" />}
+                      href="/dashboard"
+                    />
+                  </UserButton.MenuItems>
+                </UserButton>
+              </SignedIn>
+            </div>
           </div>
         </NavBody>
 
@@ -68,19 +88,17 @@ export function NavMenu() {
               </a>
             ))}
             <div className="flex w-full flex-col gap-4">
+              <NavbarButton variant="primary" className="w-full">
+                <ThemeSwitcher />
+              </NavbarButton>
               <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  window.location.href = '/login';
+                }}
                 variant="primary"
                 className="w-full"
               >
                 Login
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Book a call
               </NavbarButton>
             </div>
           </MobileNavMenu>
