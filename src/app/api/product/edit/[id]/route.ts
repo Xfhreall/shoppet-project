@@ -3,14 +3,14 @@ import { type NextRequest, NextResponse } from 'next/server';
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const body = await req.json();
     const { title, description, price, image_url, category } = body;
 
     const updatedProduct = await prisma.product.update({
-      where: { id: params.id },
+      where: { id: (await params).id },
       data: {
         title,
         description,
