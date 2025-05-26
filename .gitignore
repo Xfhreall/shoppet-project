@@ -13,8 +13,6 @@
 # testing
 /coverage
 
-# Ignore Prisma-generated files
-/src/generated/prisma
 
 # next.js
 /.next/
