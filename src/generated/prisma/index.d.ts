@@ -4,6 +4,7 @@
 **/
 
 import * as runtime from './runtime/library.js';
+import $Types = runtime.Types // general types
 import $Public = runtime.Types.Public
 import $Utils = runtime.Types.Utils
 import $Extensions = runtime.Types.Extensions
@@ -170,39 +171,39 @@ export class PrismaClient<
 }
 
 export namespace Prisma {
-  export 
+  export import DMMF = runtime.DMMF
 
   export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
   /**
    * Validator
    */
-  export 
+  export import validator = runtime.Public.validator
 
   /**
    * Prisma Errors
    */
-  export 
-  export 
-  export 
-  export 
-  export 
+  export import PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError
+  export import PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError
+  export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
+  export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
+  export import PrismaClientValidationError = runtime.PrismaClientValidationError
 
   /**
    * Re-export of sql-template-tag
    */
-  export 
-  export 
-  export 
-  export 
-  export 
+  export import sql = runtime.sqltag
+  export import empty = runtime.empty
+  export import join = runtime.join
+  export import raw = runtime.raw
+  export import Sql = runtime.Sql
 
 
 
   /**
    * Decimal.js
    */
-  export 
+  export import Decimal = runtime.Decimal
 
   export type DecimalJsLike = runtime.DecimalJsLike
 
@@ -217,12 +218,12 @@ export namespace Prisma {
   /**
   * Extensions
   */
-  export 
-  export 
-  export 
-  export 
-  export 
-  export 
+  export import Extension = $Extensions.UserArgs
+  export import getExtensionContext = runtime.Extensions.getExtensionContext
+  export import Args = $Public.Args
+  export import Payload = $Public.Payload
+  export import Result = $Public.Result
+  export import Exact = $Public.Exact
 
   /**
    * Prisma Client JS version: 6.8.2
@@ -239,12 +240,12 @@ export namespace Prisma {
    */
 
 
-  export 
-  export 
-  export 
-  export 
-  export 
-  export 
+  export import JsonObject = runtime.JsonObject
+  export import JsonArray = runtime.JsonArray
+  export import JsonValue = runtime.JsonValue
+  export import InputJsonObject = runtime.InputJsonObject
+  export import InputJsonArray = runtime.InputJsonArray
+  export import InputJsonValue = runtime.InputJsonValue
 
   /**
    * Types of the values used to represent different kinds of `null` values when working with JSON fields.
@@ -397,13 +398,13 @@ export namespace Prisma {
   /**
    * Is T a Record?
    */
-  type IsObject<T> = T extends Array<any>
+  type IsObject<T extends any> = T extends Array<any>
   ? False
   : T extends Date
   ? False
   : T extends Uint8Array
   ? False
-  : T extends bigint
+  : T extends BigInt
   ? False
   : T extends object
   ? True
@@ -413,7 +414,7 @@ export namespace Prisma {
   /**
    * If it's T[], return T
    */
-  export type UnEnumerate<T> = T extends Array<infer U> ? U : T
+  export type UnEnumerate<T extends unknown> = T extends Array<infer U> ? U : T
 
   /**
    * From ts-toolbelt
@@ -474,7 +475,7 @@ export namespace Prisma {
       0: AtLoose<O, K>;
   }[strict];
 
-  export type ComputeRaw<A> = A extends Function ? A : {
+  export type ComputeRaw<A extends any> = A extends Function ? A : {
     [K in keyof A]: A[K];
   } & {};
 
@@ -523,7 +524,7 @@ export namespace Prisma {
     1: 0
   }[B]
 
-  export type Extends<A1, A2> = [A1] extends [never]
+  export type Extends<A1 extends any, A2 extends any> = [A1] extends [never]
     ? 0 // anything `never` is false
     : A1 extends A2
     ? 1
@@ -875,7 +876,7 @@ export namespace Prisma {
   }
 
   export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
-  export type GetEvents<T> = T extends Array<LogLevel | LogDefinition> ?
+  export type GetEvents<T extends any> = T extends Array<LogLevel | LogDefinition> ?
     GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
     : never
 
@@ -2049,6 +2050,7 @@ export namespace Prisma {
     description: string | null
     price: string | null
     image_url: string | null
+    category: string | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2060,6 +2062,7 @@ export namespace Prisma {
     description: string | null
     price: string | null
     image_url: string | null
+    category: string | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2071,6 +2074,7 @@ export namespace Prisma {
     description: number
     price: number
     image_url: number
+    category: number
     userId: number
     createdAt: number
     updatedAt: number
@@ -2084,6 +2088,7 @@ export namespace Prisma {
     description?: true
     price?: true
     image_url?: true
+    category?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -2095,6 +2100,7 @@ export namespace Prisma {
     description?: true
     price?: true
     image_url?: true
+    category?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -2106,6 +2112,7 @@ export namespace Prisma {
     description?: true
     price?: true
     image_url?: true
+    category?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -2190,6 +2197,7 @@ export namespace Prisma {
     description: string
     price: string
     image_url: string
+    category: string
     userId: string
     createdAt: Date
     updatedAt: Date
@@ -2218,6 +2226,7 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     image_url?: boolean
+    category?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2230,6 +2239,7 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     image_url?: boolean
+    category?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2242,6 +2252,7 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     image_url?: boolean
+    category?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2254,12 +2265,13 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     image_url?: boolean
+    category?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "price" | "image_url" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "price" | "image_url" | "category" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2281,6 +2293,7 @@ export namespace Prisma {
       description: string
       price: string
       image_url: string
+      category: string
       userId: string
       createdAt: Date
       updatedAt: Date
@@ -2713,6 +2726,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Product", 'String'>
     readonly price: FieldRef<"Product", 'String'>
     readonly image_url: FieldRef<"Product", 'String'>
+    readonly category: FieldRef<"Product", 'String'>
     readonly userId: FieldRef<"Product", 'String'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly updatedAt: FieldRef<"Product", 'DateTime'>
@@ -3159,6 +3173,7 @@ export namespace Prisma {
     description: 'description',
     price: 'price',
     image_url: 'image_url',
+    category: 'category',
     userId: 'userId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -3287,6 +3302,7 @@ export namespace Prisma {
     description?: StringFilter<"Product"> | string
     price?: StringFilter<"Product"> | string
     image_url?: StringFilter<"Product"> | string
+    category?: StringFilter<"Product"> | string
     userId?: StringFilter<"Product"> | string
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
@@ -3299,6 +3315,7 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     image_url?: SortOrder
+    category?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3314,6 +3331,7 @@ export namespace Prisma {
     description?: StringFilter<"Product"> | string
     price?: StringFilter<"Product"> | string
     image_url?: StringFilter<"Product"> | string
+    category?: StringFilter<"Product"> | string
     userId?: StringFilter<"Product"> | string
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
@@ -3326,6 +3344,7 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     image_url?: SortOrder
+    category?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3343,6 +3362,7 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Product"> | string
     price?: StringWithAggregatesFilter<"Product"> | string
     image_url?: StringWithAggregatesFilter<"Product"> | string
+    category?: StringWithAggregatesFilter<"Product"> | string
     userId?: StringWithAggregatesFilter<"Product"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
@@ -3400,6 +3420,7 @@ export namespace Prisma {
     description: string
     price: string
     image_url: string
+    category: string
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutProductInput
@@ -3411,6 +3432,7 @@ export namespace Prisma {
     description: string
     price: string
     image_url: string
+    category: string
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -3422,6 +3444,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     image_url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProductNestedInput
@@ -3433,6 +3456,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     image_url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3444,6 +3468,7 @@ export namespace Prisma {
     description: string
     price: string
     image_url: string
+    category: string
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -3455,6 +3480,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     image_url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3465,6 +3491,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     image_url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3553,6 +3580,7 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     image_url?: SortOrder
+    category?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3564,6 +3592,7 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     image_url?: SortOrder
+    category?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3575,6 +3604,7 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     image_url?: SortOrder
+    category?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3731,6 +3761,7 @@ export namespace Prisma {
     description: string
     price: string
     image_url: string
+    category: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3741,6 +3772,7 @@ export namespace Prisma {
     description: string
     price: string
     image_url: string
+    category: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3780,6 +3812,7 @@ export namespace Prisma {
     description?: StringFilter<"Product"> | string
     price?: StringFilter<"Product"> | string
     image_url?: StringFilter<"Product"> | string
+    category?: StringFilter<"Product"> | string
     userId?: StringFilter<"Product"> | string
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
@@ -3831,6 +3864,7 @@ export namespace Prisma {
     description: string
     price: string
     image_url: string
+    category: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3841,6 +3875,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     image_url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3851,6 +3886,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     image_url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3861,6 +3897,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     image_url?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
