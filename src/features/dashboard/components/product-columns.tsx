@@ -160,8 +160,13 @@ export const columns: ColumnDef<Product>[] = [
               Copy product ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View product</DropdownMenuItem>
-            <DropdownMenuItem>Edit product</DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                window.location.href = `/form/${product.id}`;
+              }}
+            >
+              Edit product
+            </DropdownMenuItem>
             <DropdownMenuItem className="text-red-600">
               Delete product
             </DropdownMenuItem>

@@ -8,17 +8,15 @@ import {
   SelectValue,
 } from '@/shared/components/ui/select';
 import { Skeleton } from '@/shared/components/ui/skeleton';
-import { getProducts } from '@/shared/hooks/use-get-data';
+import { getUserProducts } from '@/shared/hooks/use-user-product';
 import { Filter } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { DataTable } from './dashboard-table';
 import { type Product, columns } from './product-columns';
 
 export default function ProductsDataTable() {
-  const { data, isError, isPending } = getProducts();
+  const { data, isError, isPending } = getUserProducts();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-
-  // Get unique categories for filter dropdown
   const categories = useMemo(() => {
     if (!data) return [];
     const uniqueCategories = Array.from(
@@ -63,7 +61,6 @@ export default function ProductsDataTable() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">Projects / Products</h1>
-
       {/* Category Filter */}
       <div className="flex items-center gap-2 mb-6">
         <Filter className="h-4 w-4 text-muted-foreground" />
