@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack -p 8000",
-    "build": "next build",
+    "build": "npx prisma generate --no-engine && next build",
     "start": "next start",
     "postinstall": "prisma generate --no-engine",
     "lint": "pnpm dlx @biomejs/biome lint",
