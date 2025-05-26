@@ -6,6 +6,7 @@ export default function Hero() {
   const ref = useRef<HTMLHeadingElement>(null);
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 2800], [0, 80]);
+  const radius = useTransform(scrollY, [0, 2000], ['0px', '100px']);
 
   const text = useTransform(scrollY, [0, 300], [1, 0]);
 
@@ -16,8 +17,8 @@ export default function Hero() {
     >
       <div className="h-screen w-full sticky top-0 grid place-items-center">
         <motion.div
-          className="bg-foreground aspect-square size-12 absolute rounded-full"
-          style={{ scale }}
+          className="bg-foreground aspect-square size-12 absolute"
+          style={{ scale, borderRadius: radius }}
         />
         <motion.h1
           className="text-[4rem] font-semibold"

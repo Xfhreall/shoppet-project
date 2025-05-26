@@ -14,7 +14,7 @@
 /coverage
 
 # Ignore Prisma-generated files
-/src/generated/
+/src/generated/prisma
 
 # next.js
 /.next/
