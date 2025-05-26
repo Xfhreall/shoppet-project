@@ -23,6 +23,9 @@
 # production
 /build
 
+# delete route
+/src/app/api/product/delete/*
+
 # misc
 .DS_Store
 *.pem
