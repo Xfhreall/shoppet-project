@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack -p 8000",
     "build": "next build",
     "start": "next start",
+    "postinstall": "prisma generate --no-engine",
     "lint": "pnpm dlx @biomejs/biome lint",
     "lint:fix": "pnpm dlx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true",
     "prepare": "husky"
@@ -46,6 +47,7 @@
     "react-hook-form": "^7.56.4",
     "sonner": "^2.0.3",
     "tailwind-merge": "^3.3.0",
+    "tsx": "^4.19.4",
     "uuid": "^11.1.0",
     "zod": "^3.25.23"
   },
