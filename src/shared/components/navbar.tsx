@@ -87,19 +87,24 @@ export function NavMenu() {
                 <span className="block">{item.name}</span>
               </a>
             ))}
-            <div className="flex w-full flex-col gap-4">
-              <NavbarButton variant="primary" className="w-full">
-                <ThemeSwitcher />
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => {
-                  window.location.href = '/login';
-                }}
-                variant="primary"
-                className="w-full"
-              >
-                Login
-              </NavbarButton>
+            <div className="flex w-full justify-between items-center">
+              <ThemeSwitcher />
+              <div>
+                <SignedOut>
+                  <SignInButton />
+                </SignedOut>
+                <SignedIn>
+                  <UserButton>
+                    <UserButton.MenuItems>
+                      <UserButton.Link
+                        label="Dashboard"
+                        labelIcon={<LayoutDashboard className="size-4" />}
+                        href="/dashboard"
+                      />
+                    </UserButton.MenuItems>
+                  </UserButton>
+                </SignedIn>
+              </div>
             </div>
           </MobileNavMenu>
         </MobileNav>

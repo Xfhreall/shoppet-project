@@ -1,5 +1,5 @@
 import '@/shared/styles/globals.css';
-import { AppProviders } from '@/shared/provider';
+import { AppProviders } from '@/shared/providers';
 import { Geist_Mono, Sora } from 'next/font/google';
 import type { Metadata } from 'next';
 

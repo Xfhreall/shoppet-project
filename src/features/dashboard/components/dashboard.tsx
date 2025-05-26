@@ -5,7 +5,7 @@ import {
     CardHeader,
     CardTitle,
 } from '@/shared/components/ui/card';
-import { getProducts } from '@/shared/services/data';
+import { getProducts } from '@/shared/hooks/use-get-data';
 import { formatCurrency } from '@/shared/utils/format-currency';
 
 export const Dashboard = () => {
