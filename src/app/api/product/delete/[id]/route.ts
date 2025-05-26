@@ -2,10 +2,10 @@ import prisma from '@/shared/lib/prisma';
 import { type NextRequest, NextResponse } from 'next/server';
 
 export async function DELETE(
-  _request: NextRequest,
-  { params }: { params: { id: string } },
+  req: NextRequest,
+  context: { params: { id: string } },
 ) {
-  const { id } = params;
+  const { id } = context.params;
 
   try {
     const deletedProduct = await prisma.product.delete({
