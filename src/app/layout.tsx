@@ -1,8 +1,7 @@
-import { ThemeProvider } from '@/shared/providers/theme-provider';
-import type { Metadata } from 'next';
-import { Geist_Mono, Sora } from 'next/font/google';
 import '@/shared/styles/globals.css';
-import { ClerkProvider } from '@clerk/nextjs';
+import { AppProviders } from '@/shared/provider';
+import { Geist_Mono, Sora } from 'next/font/google';
+import type { Metadata } from 'next';
 
 const sora = Sora({
   variable: '--font-sora',
@@ -22,18 +21,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <ClerkProvider>
-      <html suppressHydrationWarning lang="en">
-        <body className={`${sora.className} ${geistMono.variable} antialiased`}>
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-            {children}
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html suppressHydrationWarning lang="en">
+      <body className={`${sora.className} ${geistMono.variable} antialiased`}>
+        <AppProviders>{children}</AppProviders>
+      </body>
+    </html>
   );
 }

@@ -1,7 +1,7 @@
-import { SidebarProvider } from '@/shared/components/ui/sidebar';
-import type { Metadata } from 'next';
 import SidebarDashboard from '@/shared/components/sidebar';
+import { SidebarProvider } from '@/shared/components/ui/sidebar';
 import { ThemeSwitcher } from '@/shared/components/ui/theme-switcher';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Dashboard',
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <SidebarProvider>
       <div className="block md:flex h-screen relative">
-        <div className="absolute top-5 right-5">
+        <div className="absolute hidden md:block top-5 right-5">
           <ThemeSwitcher />
         </div>
         <div className="block sm:flex ">

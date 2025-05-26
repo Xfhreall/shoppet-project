@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from '@/shared/components/ui/card';
 import { Skeleton } from '@/shared/components/ui/skeleton';
+import { formatCurrency } from '@/shared/utils/format-currency';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -67,7 +68,7 @@ export default function Page() {
               <CardContent className="grid gap-2">
                 <p className="text-sm">{product.description}</p>
                 <Badge variant="outline">{product.category}</Badge>
-                <p className="font-semibold text-blue-600">${product.price}</p>
+                <p className="font-semibold text-blue-600">{formatCurrency(Number(product.price))}</p>
               </CardContent>
             </Card>
           ))}
