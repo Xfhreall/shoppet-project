@@ -7,7 +7,6 @@ import {
   NavBody,
   NavItems,
   Navbar,
-  NavbarButton,
   NavbarLogo,
   ThemeButton,
 } from '@/shared/components/ui/resizable-navbar';
@@ -30,7 +29,6 @@ export function NavMenu() {
       name: 'Contact',
       link: '/contact',
     },
-    { name: '', link: '' },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
