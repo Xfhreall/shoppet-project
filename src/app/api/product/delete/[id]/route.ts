@@ -46,7 +46,5 @@ export async function DELETE(
       { message: 'Internal server error' },
       { status: 500 },
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }

@@ -2,6 +2,7 @@
 
 import { Badge } from '@/shared/components/ui/badge';
 import { Button } from '@/shared/components/ui/button';
+import { ConfirmDeleteModal } from '@/shared/components/ui/delete-modal';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,11 +11,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/shared/components/ui/dropdown-menu';
+import { useDeleteProduct } from '@/shared/hooks/use-delete-product';
 import { formatCurrency } from '@/shared/utils/format-currency';
 import type { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
-// Define the Product type based on your data structure
 export type Product = {
   id: string;
   title: string;
@@ -24,6 +27,68 @@ export type Product = {
   image_url: string;
   createdAt: string;
 };
+
+function ActionsCell({ product }: { product: Product }) {
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const deleteProduct = useDeleteProduct();
+
+  const handleDelete = async () => {
+    try {
+      await deleteProduct.mutateAsync(product.id);
+      toast.success('Product deleted successfully');
+      setIsDeleteDialogOpen(false);
+    } catch (error) {
+      toast.error('Failed to delete product');
+    }
+  };
+
+  if (deleteProduct.isPending) {
+    toast.loading('Deleting product...');
+  }
+
+  return (
+    <>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="h-8 w-8 p-0">
+            <span className="sr-only">Open menu</span>
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuItem
+            onClick={() => navigator.clipboard.writeText(product.id)}
+          >
+            Copy product ID
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem
+            onClick={() => {
+              window.location.href = `/form/${product.id}`;
+            }}
+          >
+            Edit product
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            className="text-red-600 focus:text-red-600"
+            onClick={() => setIsDeleteDialogOpen(true)}
+          >
+            Delete product
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      <ConfirmDeleteModal
+        isOpen={isDeleteDialogOpen}
+        onClose={() => setIsDeleteDialogOpen(false)}
+        onConfirm={handleDelete}
+        productTitle={product.title}
+        isLoading={deleteProduct.isPending}
+      />
+    </>
+  );
+}
 
 export const columns: ColumnDef<Product>[] = [
   {
@@ -143,36 +208,7 @@ export const columns: ColumnDef<Product>[] = [
     enableHiding: false,
     cell: ({ row }) => {
       const product = row.original;
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(product.id)}
-            >
-              Copy product ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => {
-                window.location.href = `/form/${product.id}`;
-              }}
-            >
-              Edit product
-            </DropdownMenuItem>
-            <DropdownMenuItem className="text-red-600">
-              Delete product
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
+      return <ActionsCell product={product} />;
     },
   },
 ];

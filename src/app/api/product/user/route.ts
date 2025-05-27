@@ -24,12 +24,22 @@ export async function GET(req: NextRequest) {
   });
 
   try {
+    if (!user) {
+      return NextResponse.json({ error: 'Product empty' }, { status: 404 });
+    }
+
+    if (user?.role === 'ADMIN') {
+      const products = await prisma.product.findMany({
+        orderBy: { createdAt: 'asc' },
+      });
+      return NextResponse.json(products);
+    }
+
     const products = await prisma.product.findMany({
       where: {
         userId: user?.id,
       },
     });
-
     return NextResponse.json(products);
   } catch (error) {
     return NextResponse.json(

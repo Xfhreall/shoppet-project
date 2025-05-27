@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/shared/components/ui/button';
 import {
   Select,
   SelectContent,
@@ -9,13 +10,14 @@ import {
 } from '@/shared/components/ui/select';
 import { Skeleton } from '@/shared/components/ui/skeleton';
 import { getUserProducts } from '@/shared/hooks/use-user-product';
-import { Filter } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { Filter, RefreshCw } from 'lucide-react';
+import { useCallback, useMemo, useState } from 'react';
+import { toast } from 'sonner';
 import { DataTable } from './dashboard-table';
 import { type Product, columns } from './product-columns';
 
 export default function ProductsDataTable() {
-  const { data, isError, isPending } = getUserProducts();
+  const { data, isError, isPending, refetch } = getUserProducts();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const categories = useMemo(() => {
     if (!data) return [];
@@ -33,6 +35,15 @@ export default function ProductsDataTable() {
       (product: Product) => product.category === selectedCategory,
     );
   }, [data, selectedCategory]);
+
+  const handleRefresh = useCallback(() => {
+    refetch();
+    if (isError) {
+      toast.error('Failed to refresh reports');
+    } else {
+      toast.success('Reports refreshed');
+    }
+  }, [refetch, isError]);
 
   if (isPending) {
     return (
@@ -76,6 +87,10 @@ export default function ProductsDataTable() {
               </SelectItem>
             ))}
           </SelectContent>
+          <Button className="ml-auto" variant="outline" onClick={handleRefresh}>
+            <RefreshCw className="w-4 h-4" />
+            Refresh
+          </Button>
         </Select>
       </div>
 

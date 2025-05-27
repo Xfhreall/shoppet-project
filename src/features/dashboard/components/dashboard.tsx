@@ -6,10 +6,12 @@ import {
   CardTitle,
 } from '@/shared/components/ui/card';
 import { getUserProducts } from '@/shared/hooks/use-user-product';
+import { getUserEmail } from '@/shared/lib/user-data';
 import { formatCurrency } from '@/shared/utils/format-currency';
 
 export const Dashboard = () => {
   const { data } = getUserProducts();
+  const userEmail = getUserEmail();
 
   const totalItems = data?.length;
   const categories = [...new Set(data?.map((item) => item.category))];
@@ -19,7 +21,7 @@ export const Dashboard = () => {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
-        <p className="text-accent-foreground">Overview of your data</p>
+        <p className="text-accent-foreground">{`Welcome ${userEmail}`}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
