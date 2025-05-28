@@ -6,8 +6,8 @@ export default function Hero() {
   const ref = useRef<HTMLHeadingElement>(null);
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 2800], [0, 80]);
-  const radius = useTransform(scrollY, [0, 2000], ['0px', '100px']);
-  const opacity = useTransform(scrollY, [0, 200], [0, 1])
+  const radius = useTransform(scrollY, [0, 1400], ['0px', '100px']);
+  const opacity = useTransform(scrollY, [0, 200], [0, 1]);
   const text = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
