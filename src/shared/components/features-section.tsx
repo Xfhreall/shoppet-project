@@ -26,7 +26,7 @@ export default function FeaturesSection() {
     {
       title: 'Watch our product on YouTube',
       description:
-        'Whether its you or Mamank, you can get to know about our product on YouTube',
+        'Whether its you or Fufufafa, you can get to know about our product on YouTube',
       skeleton: <SkeletonThree />,
       className:
         'col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800',
@@ -115,7 +115,7 @@ export const SkeletonOne = () => {
         <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
           {/* TODO */}
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuKov_2fBlPgvKu00MTcqEq-jRkBBV0pSdeQ&s"
+            src="https://i.pinimg.com/736x/15/fe/c5/15fec596d6139b3dc11945fbee733629.jpg"
             alt="header"
             width={800}
             height={800}
@@ -142,7 +142,7 @@ export const SkeletonThree = () => {
           {/* TODO */}
           <IconBrandYoutubeFilled className="h-20 w-20 absolute z-10 inset-0 text-red-500 m-auto " />
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp5cI4KwSUfoebdiZx1Wy_j0dme1ymPGnfWQ&s"
+            src="https://img.okezone.com/content/2025/04/20/337/3132325/wakil_presiden_gibran_rakabuming-8tuG_large.jpg"
             alt="header"
             width={800}
             height={800}
