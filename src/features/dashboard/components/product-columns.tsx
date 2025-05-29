@@ -37,6 +37,9 @@ function ActionsCell({ product }: { product: Product }) {
       await deleteProduct.mutateAsync(product.id);
       toast.success('Product deleted successfully');
       setIsDeleteDialogOpen(false);
+      if (typeof window !== 'undefined') {
+        window.location.reload();
+      }
     } catch (error) {
       toast.error('Failed to delete product');
     }
