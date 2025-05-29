@@ -1,7 +1,6 @@
 'use client';
 
 import { Badge } from '@/shared/components/ui/badge';
-import { Button } from '@/shared/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -58,12 +57,6 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
             <p className="text-muted-foreground leading-relaxed">
               {product.description}
             </p>
-            <div className="flex gap-2 pt-4">
-              <Button className="flex-1">Add to Cart</Button>
-              <Button variant="outline" className="flex-1">
-                Add to Wishlist
-              </Button>
-            </div>
           </div>
         </div>
       </DialogContent>
