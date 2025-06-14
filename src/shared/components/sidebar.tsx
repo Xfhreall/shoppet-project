@@ -53,7 +53,7 @@ export default function SidebarDashboard() {
     <div
       className={cn(
         'mx-auto flex w-full sticky top-0 flex-1 flex-col overflow-hidden rounded-md border border-neutral-200 bg-gray-200 md:flex-row dark:border-neutral-700 dark:bg-neutral-900',
-        'md:h-screen h-full',
+        'md:h-screen h-full relative z-[9999]',
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>

@@ -66,17 +66,17 @@ export function MissionSection() {
 
   return (
     <section ref={ref} className="py-20">
-      <div className="container mx-auto px-4">
+      <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-background mb-6">
+          <h2 className="mb-6 text-4xl font-bold text-background md:text-5xl">
             Our Mission & Values
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="max-w-3xl mx-auto text-xl leading-relaxed text-muted-foreground">
             At Shoppet, we believe every pet deserves the best. Our mission is
             to make premium pet care accessible, convenient, and affordable for
             pet parents everywhere.
@@ -87,25 +87,25 @@ export function MissionSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 gap-8 md:grid-cols-2"
         >
           {values.map((value, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <Card className="h-full group hover:shadow-xl transition-all duration-500 border-0 bg-card backdrop-blur-sm overflow-hidden">
+              <Card className="h-full overflow-hidden transition-all duration-500 border-0 group hover:shadow-xl bg-card backdrop-blur-sm">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-6">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 10 }}
                       transition={{ duration: 0.3 }}
-                      className={`flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${value.color} flex items-center justify-center shadow-lg`}
+                      className={`flex items-center justify-center flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${value.color} shadow-lg`}
                     >
-                      <value.icon className="h-7 w-7 text-white" />
+                      <value.icon className="text-white w-7 h-7" />
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                      <h3 className="mb-3 text-xl font-semibold transition-colors group-hover:text-primary">
                         {value.title}
                       </h3>
-                      <p className="text-muted-foreground leading-relaxed">
+                      <p className="leading-relaxed text-muted-foreground">
                         {value.description}
                       </p>
                     </div>

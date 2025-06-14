@@ -16,13 +16,13 @@ export default function RootLayout({
   return (
     <SidebarProvider>
       <div className="block md:flex h-screen relative">
-        <div className="absolute hidden md:block top-5 right-5">
+        <div className="absolute hidden md:block top-5 right-5 z-50">
           <ThemeSwitcher />
         </div>
-        <div className="block sm:flex ">
+        <div className="block sm:flex relative z-[9999]">
           <SidebarDashboard />
         </div>
-        <div className="flex-1 min-h-screen bg-background">
+        <div className="flex-1 min-h-screen bg-background relative z-0">
           <main className="h-full w-full p-6 overflow-y-auto">{children}</main>
         </div>
       </div>

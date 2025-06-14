@@ -48,7 +48,7 @@ export default function ProductsDataTable() {
   if (isPending) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6">Projects / Products</h1>
+        <h1 className="text-2xl font-bold mb-6">Products</h1>
         <div className="space-y-4">
           <div className="flex gap-4">
             <Skeleton className="h-10 w-[300px]" />
@@ -63,7 +63,7 @@ export default function ProductsDataTable() {
   if (isError) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6">Projects / Products</h1>
+        <h1 className="text-2xl font-bold mb-6">Products</h1>
         <p className="text-red-500">Failed to load products.</p>
       </div>
     );
@@ -71,7 +71,7 @@ export default function ProductsDataTable() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">Projects / Products</h1>
+      <h1 className="text-2xl font-bold mb-6">Products</h1>
       {/* Category Filter */}
       <div className="flex items-center gap-2 mb-6">
         <Filter className="h-4 w-4 text-muted-foreground" />
