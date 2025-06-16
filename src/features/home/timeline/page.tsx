@@ -12,7 +12,7 @@ export function TimelineSection() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="https://cdn.discordapp.com/attachments/1205078015319613452/1377587291891040317/Gambar_WhatsApp_2025-05-27_pukul_21.32.23_950ffdca.jpg?ex=683981a4&is=68383024&hm=90d4f10d88c149ce41fee785e0f3ca5f2eb5156f1527be456912ba0f894b9719&"
+              src="https://cdn.discordapp.com/attachments/1351554887153876992/1384129268883390484/Gambar_WhatsApp_2025-06-16_pukul_18.14.37_f6b45794.jpg?ex=68514e55&is=684ffcd5&hm=82c3866111d43bda2e7c3c00651fad376d4aae721477d1f2071dee969edfd067&"
               alt="startup template"
               width={500}
               height={500}
@@ -35,7 +35,7 @@ export function TimelineSection() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="https://cdn.discordapp.com/attachments/1205078015319613452/1377588513662304326/image.png?ex=683982c8&is=68383148&hm=7c817baec94078f0b73da0fec16bb89969d93aa03aa8bf3a293ee27319a19fda&"
+              src="https://media.discordapp.net/attachments/1351554887153876992/1384128974229340220/Screenshot_2025-06-16_at_18-13-50_Shoppet.png?ex=68514e0f&is=684ffc8f&hm=633b580f48ec2bd02672b08eeb462c1ead76826b259974c0d26ba0eb8bc2453b&=&format=webp&quality=lossless&width=1636&height=873"
               alt="hero template"
               width={500}
               height={500}
@@ -64,7 +64,7 @@ export function TimelineSection() {
             </div>
             <div className="grid grid-cols-2 gap-4 mt-4">
               <img
-                src="https://cdn.discordapp.com/attachments/1205078015319613452/1377588754285592669/image.png?ex=68398301&is=68383181&hm=587bf4a6fed6d2cdb12ae58f04f2872254a219af5f2a89af995466215b1b791a&"
+                src="https://media.discordapp.net/attachments/1351554887153876992/1384128973927088238/Screenshot_2025-06-16_at_18-12-36_Shoppet.png?ex=68514e0f&is=684ffc8f&hm=f577492e23bedf983f8bfa5b9bed09a9ac8e955c8676a2b3aca1036177e2ef99&=&format=webp&quality=lossless&width=1636&height=873"
                 alt="hero template"
                 width={500}
                 height={500}
